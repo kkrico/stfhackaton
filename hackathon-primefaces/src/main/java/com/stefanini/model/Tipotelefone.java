@@ -15,6 +15,37 @@ import javax.persistence.Table;
 @Table(name = "tipotelefone", catalog = "hackatonjsf")
 public class Tipotelefone implements java.io.Serializable {
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((descricaoTipoTelefone == null) ? 0 : descricaoTipoTelefone.hashCode());
+		result = prime * result + ((idTipoTelefone == null) ? 0 : idTipoTelefone.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tipotelefone other = (Tipotelefone) obj;
+		if (descricaoTipoTelefone == null) {
+			if (other.descricaoTipoTelefone != null)
+				return false;
+		} else if (!descricaoTipoTelefone.equals(other.descricaoTipoTelefone))
+			return false;
+		if (idTipoTelefone == null) {
+			if (other.idTipoTelefone != null)
+				return false;
+		} else if (!idTipoTelefone.equals(other.idTipoTelefone))
+			return false;
+		return true;
+	}
+
 	private Integer idTipoTelefone;
 	private String descricaoTipoTelefone;
 

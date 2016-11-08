@@ -5,7 +5,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<h:head>
+	<title>Novo Agente</title>
+</h:head>
 <h:body>
 
 	<h:form>
@@ -13,17 +15,15 @@
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="nome" value="Agente: " />
 				<p:inputText value="#{agenteBean.agente.nome}" id="nome"></p:inputText>
-				
+
 				<p:outputLabel for="data" value="Data Contratação: " />
-				<p:calendar for="datacontratacao" value="#{agenteBean.agente.dtContratacao}" id="data"/>
-				
-				<p:outputLabel for="tmp" value="Tempo de Serviço: " />
-				<p:inputNumber value="#{agenteBean.agente.tempoServico}" id="tmp"></p:inputNumber>
+				<p:calendar for="datacontratacao"
+					value="#{agenteBean.agente.dtContratacao}" id="data" />
 			</h:panelGrid>
-			
+
 			<p:commandButton action="#{agenteBean.salvar()}" value="Salvar"></p:commandButton>
 		</p:panel>
-		
+
 	</h:form>
 </h:body>
 </html>

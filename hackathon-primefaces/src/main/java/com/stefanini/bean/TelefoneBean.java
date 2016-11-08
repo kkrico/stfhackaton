@@ -5,37 +5,30 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.stefanini.model.Agente;
-import com.stefanini.service.AgenteService;
+import com.stefanini.model.Telefones;
+import com.stefanini.service.TelefoneService;
 
-@Named("agenteBean")
+@Named("telefoneBean")
 @SessionScoped
-public class AgenteBean implements Serializable {
+public class TelefoneBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	@Inject
-	private AgenteService agenteService;
-	private Agente agente;
-
-	public AgenteBean() {
-		this.agente = new Agente();
+	private Telefones telefone = new Telefones();
+	private TelefoneService telefoneService;
+	
+	public Telefones getTelefone() {
+		return telefone;
 	}
-
-	public Agente getAgente() {
-		return agente;
+	public void setTelefone(Telefones telefone) {
+		this.telefone = telefone;
 	}
-
-	public void setAgente(Agente agente) {
-		this.agente = agente;
-	}
-
+	
 	public void salvar() {
-		agenteService.salvar(this.agente);
-		this.agente = new Agente();
+		telefoneService.salvar(this.telefone);
+		this.telefone = new Telefones();
 
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Atenção", "Inserido com sucesso"));
