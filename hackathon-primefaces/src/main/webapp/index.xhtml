@@ -8,6 +8,8 @@
 </h:head>
 <h:body>
     <h:form>
+    
+    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
          <h:panelGrid columns="2">
          <label>Nome:</label>
          <p:inputText value="#{agenteBean.agente.nome}" />
@@ -16,7 +18,7 @@
          <label>Tempo de Serviço</label>
          <p:inputText value="#{agenteBean.agente.tempoServico}" />
          
-         <p:commandButton action="#{agenteBean.incluir()}" value="Incluir" ></p:commandButton>
+         <p:commandButton action="#{agenteBean.salvar()}" value="Incluir" ></p:commandButton>
          </h:panelGrid>
     </h:form>
 </h:body>

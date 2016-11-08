@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+	<h:form>
+		<p:panel header="Novo Agente" style="margin-bottom:10px;">
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="nome" value="Agente: " />
+				<p:inputText value="#{agenteBean.agente.nome}" id="nome"></p:inputText>
+				
+				<p:outputLabel for="data" value="Data Contratação: " />
+				<p:calendar for="datacontratacao" value="#{agenteBean.agente.dtContratacao}" id="data"/>
+				
+				<p:outputLabel for="tmp" value="Tempo de Serviço: " />
+				<p:inputNumber value="#{agenteBean.agente.tempoServico}" id="tmp"></p:inputNumber>
+			</h:panelGrid>
+			
+			<p:commandButton action="#{agenteBean.salvar()}" value="Salvar"></p:commandButton>
+		</p:panel>
+		
+	</h:form>
+</h:body>
+</html>

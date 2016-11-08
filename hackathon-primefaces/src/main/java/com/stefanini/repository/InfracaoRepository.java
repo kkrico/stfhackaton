@@ -1,16 +1,15 @@
 package com.stefanini.repository;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.stefanini.model.Agente;
-
-public class AgenteRepository {
-
+public class InfracaoRepository implements Serializable{
+	
 	@Inject
 	private EntityManager manager;
 	
-	public void salvar(Agente agente) {
-		this.manager.persist(agente);
-	}
+	private static final long serialVersionUID = 1L;
+
 }

@@ -3,6 +3,8 @@ package com.stefanini.bean;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -14,14 +16,14 @@ import com.stefanini.service.AgenteService;
 public class AgenteBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Agente agente;
-
-	public AgenteBean() {
-		this.agente = new Agente();
-	}
 
 	@Inject
 	private AgenteService agenteService;
+	private Agente agente;
+	
+	public AgenteBean() {
+		this.agente = new Agente();
+	}
 
 	public Agente getAgente() {
 		return agente;
@@ -31,15 +33,10 @@ public class AgenteBean implements Serializable {
 		this.agente = agente;
 	}
 
-	public AgenteService getAgenteService() {
-		return agenteService;
-	}
-
-	public void setAgenteService(AgenteService agenteService) {
-		this.agenteService = agenteService;
-	}
-
-	public String incluir() {
-		return "pages/teste";
+	public void salvar() {
+		agenteService.salvar(this.agente);
+		this.agente = new Agente();
+		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atenção", "Inserido com sucesso"));
 	}
 }
