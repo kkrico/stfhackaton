@@ -3,16 +3,23 @@ package com.stefanini.service;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.inject.Inject;
+
 import com.stefanini.model.Proprietario;
+import com.stefanini.repository.ProprietarioRepository;
 
 public class ProprietarioService implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
+	@Inject
+	private ProprietarioRepository proprietarioRepository;
+	
+	public Proprietario buscar(int cpf) {
 
-	public Collection<Proprietario> buscar(String query) {
-		// TODO Auto-generated method stub
-		return null;
-		
+		return this.proprietarioRepository.Buscar(cpf);
+	}
+	
+	public Collection<Proprietario> listar() {
+		return this.proprietarioRepository.listar();
 	}
 }

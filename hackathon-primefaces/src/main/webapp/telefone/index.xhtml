@@ -21,13 +21,20 @@
 					<label>Numero:</label>
 					<p:inputText value="#{telefoneBean.telefone.telefoneKey.numero}" />
 					<label>Proprietario:</label>
-					<p:autoComplete id="autocomplete" value="#{telefoneBean.telefone.proprietario.cpfProprietario}" completeMethod="#{telefoneBean.autoComplete}" />
+					<p:selectOneMenu id="proprietario" value="#{telefoneBean.telefone.proprietario}" style="width:150px">
+               			 <f:selectItem itemLabel="Selecione um proprietario" itemValue="" noSelectionOption="true" />
+                		<f:selectItems value="#{proprietarioBean.listar()}" />
+            		</p:selectOneMenu>
 
+					<label>Tipo Telefone:</label>
+					<p:selectOneMenu id="tipo" value="#{telefoneBean.telefone.tipoTelefone}" style="width:150px">
+               			<f:selectItem itemLabel="Selecione um proprietario" itemValue=""  noSelectionOption="true" />
+                		<f:selectItems value="#{tipoTelefoneBean.listar()}"/>
+            		</p:selectOneMenu>
 					<p:commandButton action="#{telefoneBean.salvar}"
 						value="Incluir"></p:commandButton>
 				</h:panelGrid>
 			</p:panel>
-
 	</h:form>
 </h:body>
 </html>

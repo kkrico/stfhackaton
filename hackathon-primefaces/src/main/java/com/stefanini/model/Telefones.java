@@ -14,11 +14,11 @@ public class Telefones implements java.io.Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "idTipoTelefone")
-	private Tipotelefone tipoTelefone;
+	private Tipotelefone tipoTelefone = new Tipotelefone();
 	
 	@ManyToOne
 	@JoinColumn(name = "cpfProprietario")
-	private Proprietario proprietario;
+	private Proprietario proprietario = new Proprietario();
 	
 	@EmbeddedId
 	private TelefonesKey telefoneKey;
