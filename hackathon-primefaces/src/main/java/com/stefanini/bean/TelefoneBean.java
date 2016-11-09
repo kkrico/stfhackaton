@@ -1,6 +1,7 @@
 package com.stefanini.bean;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -9,6 +10,7 @@ import javax.inject.Named;
 
 import com.stefanini.model.Agente;
 import com.stefanini.model.Telefones;
+import com.stefanini.service.ProprietarioService;
 import com.stefanini.service.TelefoneService;
 
 @Named("telefoneBean")
@@ -18,6 +20,7 @@ public class TelefoneBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Telefones telefone = new Telefones();
 	private TelefoneService telefoneService;
+	private ProprietarioService proprietarioService;
 	
 	public Telefones getTelefone() {
 		return telefone;
@@ -32,5 +35,12 @@ public class TelefoneBean implements Serializable {
 
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Atenção", "Inserido com sucesso"));
+	}
+	
+private Collection<String> autoComplete(String query) {
+		
+		this.proprietarioService.buscar(query);
+		
+		return null;
 	}
 }

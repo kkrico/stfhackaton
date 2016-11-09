@@ -1,6 +1,5 @@
 package com.stefanini.model;
 
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -14,11 +13,11 @@ public class Telefones implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
-	@Column(name = "idTipoTelefone")
+	@JoinColumn(name = "idTipoTelefone")
 	private Tipotelefone tipoTelefone;
 	
 	@ManyToOne
-	@JoinColumn(foreignKey = @ForeignKey(name = "FK_USER"))
+	@JoinColumn(name = "cpfProprietario")
 	private Proprietario proprietario;
 	
 	@EmbeddedId

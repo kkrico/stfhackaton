@@ -12,15 +12,16 @@
 
 <h:body>
 	<h:form>
-		<p:panel header="Novo Local" style="margin-bottom:10px;">
+		<p:panel header="Novo Telefone" style="margin-bottom:10px;">
 				<p:messages id="messages" showDetail="true" autoUpdate="true"
 					closable="true" />
 				<h:panelGrid columns="2">
-					<label>Descricao:</label>
-					<p:inputText value="#{localInfracaoBean.localInfracao.descricaoLocalInfracao}" />
-					<label>Velocidade Permitida:</label>
-					<p:inputNumber id="velocidade" value="#{localInfracaoBean.localInfracao.velocidadePermitida}" symbol=" Km/H" symbolPosition="s" thousandSeparator=".">
-               		</p:inputNumber>
+					<label>DDD:</label>
+					<p:inputText value="#{telefoneBean.telefone.telefoneKey.ddd}" />
+					<label>Numero:</label>
+					<p:inputText value="#{telefoneBean.telefone.telefoneKey.numero}" />
+					<label>Proprietario:</label>
+					<p:autoComplete id="autocomplete" value="#{telefoneBean.telefone.proprietario.cpfProprietario}" completeMethod="#{telefoneBean.autoComplete}" />
 
 					<p:commandButton action="#{telefoneBean.salvar}"
 						value="Incluir"></p:commandButton>
