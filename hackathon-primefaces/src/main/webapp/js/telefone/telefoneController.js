@@ -1,4 +1,5 @@
-App.controller('AgenteCtrl', function($scope, AgenteService, $route,$routeParams,$location,EnvioService){
+App.controller('TelefoneCtrl', function($scope, AgenteService, $route,$routeParams,$location,EnvioService){
+	debugger;
 	$scope.agente = [];
 	$scope.agenteEditar = {};
 
