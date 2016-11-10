@@ -22,27 +22,24 @@ public class AgenteService implements Serializable {
 	@Inject
 	private AgenteRepository agenteRepository;
 
-	public static Collection<Agente> todosOsAgentes() {
+	public Collection<Agente> todosOsAgentes() {
 		
-		Agente a1 = new Agente();
-		a1.setNome("Agente 01");
-		a1.setTempoServico(10);
-		a1.setDtContratacao(new Date("29/09/1990"));
-		
-		Agente a2 = new Agente();
-		a2.setNome("Agente 01");
-		a2.setTempoServico(10);
-		a2.setDtContratacao(new Date("29/09/1990"));
-		
-		Collection<Agente> resultado = new ArrayList<Agente>();
-		resultado.add(a1);
-		resultado.add(a2);
-		
-		return resultado;
+		return agenteRepository.todos();
 	}
 
 	public void salvar(Agente agente) {
 		
 		agenteRepository.salvar(agente);
+	}
+
+	public void atualizar(Agente agente) {
+	
+		agenteRepository.atualizar(agente);
+		
+	}
+
+	public void remover(Integer id) {
+		agenteRepository.remover(id);
+		
 	}
 }

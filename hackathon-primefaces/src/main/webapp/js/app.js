@@ -7,19 +7,19 @@ var App = angular.module('App', [
 App.config(function($routeProvider){
 	$routeProvider
 	.when('/', {
-		templateUrl: 'views/read.html',
-		controller: 'ReadCtrl'
+		templateUrl: 'views/agente/agente.html',
+		controller: 'AgenteCtrl'
 	})
 
 	.when('/create', {
-		templateUrl: 'views/create.html',
-		controller: 'CreateCtrl'
+		templateUrl: 'views/agente/novoAgente.html',
+		controller: 'AgenteCtrl'
 	})
 
-	.when('/edit/:id', {
-		templateUrl: 'views/edit.html',
-		controller: 'EditCtrl'
+	.when('/editarAgente', {
+		templateUrl: 'views/agente/editarAgente.html',
+		controller: 'AgenteCtrl'
 	})
 });
 
-App.value('API', 'http://localhost:8080/angular-app/service/');
+App.value('API', 'http://localhost:8080/primefaces-app/service/');
