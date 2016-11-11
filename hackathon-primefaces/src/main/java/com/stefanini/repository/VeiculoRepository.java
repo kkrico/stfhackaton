@@ -19,5 +19,7 @@ public class VeiculoRepository {
 		// TODO Auto-generated method stub
 		return em.find(Veiculos.class, placaVeiculo);
 	}
-
+	public void incluir(Veiculos veiculos) {
+		em.persist(veiculos);
+	}
 }

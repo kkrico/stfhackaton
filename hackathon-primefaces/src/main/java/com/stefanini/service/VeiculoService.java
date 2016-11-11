@@ -22,4 +22,9 @@ public class VeiculoService implements Serializable {
 		// TODO Auto-generated method stub
 		return this.veiculoRepository.buscar(placaVeiculo);
 	}
+
+	public void incluir(Veiculos veiculos) {
+		// TODO Auto-generated method stub
+		this.veiculoRepository.incluir(veiculos);
+	}
 }

@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import com.stefanini.model.Proprietario;
 import com.stefanini.service.ProprietarioService;
+import com.stefanini.util.Mostrar;
 
 @Named("proprietarioMB")
 @SessionScoped
@@ -27,10 +28,10 @@ public class ProprietarioBean implements Serializable{
 	@Inject
 	private ProprietarioService proprietarioService;
 	
-	public String incluir(){
+	public void incluir(){
 		proprietarioService.incluir(proprietario);
 		this.proprietario = new Proprietario();
-		return "pages/sucessoProprietario.faces?faces-redirect=true";
+		Mostrar.MensagemSucesso("Atenção", "Inserido com sucesso");
 	}
 	
 	public String carregar(Proprietario proprietario){
@@ -61,7 +62,7 @@ public class ProprietarioBean implements Serializable{
 	}
 
 	public List<Proprietario> getProprietarios() {
-		return proprietarioService.listar(proprietario);
+		return proprietarioService.listar();
 	}
 
 	public void setProprietarios(List<Proprietario> proprietarios) {

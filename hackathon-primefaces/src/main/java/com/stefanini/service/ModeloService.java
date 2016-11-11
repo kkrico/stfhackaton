@@ -27,4 +27,9 @@ public class ModeloService {
 		return modeloRepository.listaTodos();
 	}
 
+	public Modelo buscar(Integer idModelo) {
+		// TODO Auto-generated method stub
+		return modeloRepository.buscar(idModelo);
+	}
+
 }

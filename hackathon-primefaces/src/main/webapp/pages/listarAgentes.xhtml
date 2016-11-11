@@ -30,7 +30,7 @@
     	</p:column>  	
     	
     	<p:column> 
-    	<p:commandButton id="excluir" value="Excluir" actionListener="#{agenteBean.excluir(agente.idAgente)}" />
+    	<p:commandButton id="excluir" value="Excluir" actionListener="#{agenteBean.excluir(agente.idAgente)}" update="@form"/>
     	</p:column>  
     	
 		</p:dataTable>

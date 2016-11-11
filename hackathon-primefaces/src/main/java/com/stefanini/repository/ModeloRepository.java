@@ -25,5 +25,9 @@ public class ModeloRepository {
 		return lista;
 	}
 
+	public Modelo buscar(Integer idModelo) {
+		return manager.find(Modelo.class, idModelo);
+	}
+
 
 }

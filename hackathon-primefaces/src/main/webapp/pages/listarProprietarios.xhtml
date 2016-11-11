@@ -22,7 +22,7 @@
     	</p:column>  	
     	
     	<p:column> 
-    	<p:commandButton id="excluir" value="Excluir" actionListener="#{proprietarioMB.excluir(proprietario.cpfProprietario)}" />
+    	<p:commandButton id="excluir" value="Excluir" actionListener="#{proprietarioMB.excluir(proprietario.cpfProprietario)}" update="@form"/>
     	</p:column>   
     	
 		</p:dataTable>

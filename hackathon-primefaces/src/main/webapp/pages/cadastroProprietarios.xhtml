@@ -7,6 +7,8 @@
         <ui:define name="centro">
                        
             <h:form> 
+            <p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
     <h:panelGrid columns="2">
     
     	<h:outputLabel value="Nome: " for="nome"/>
@@ -37,7 +39,7 @@
     	<h:outputLabel value="Data Nascimento: " for="dtNascimento"/>
     	<p:calendar id="dtNascimento" pattern="dd/dd/yyyy" value="#{proprietarioMB.proprietario.dtNascimento}" locale="pt_BR" ></p:calendar>
     	
-    	<p:commandButton action="#{proprietarioMB.incluir()}" value="Cadastrar Proprietario" ></p:commandButton>
+    	<p:commandButton action="#{proprietarioMB.incluir()}" value="Cadastrar Proprietario" update="@form"></p:commandButton>
     
     </h:panelGrid>
 </h:form>   

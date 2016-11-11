@@ -57,7 +57,7 @@ public class TipotelefoneBean implements Serializable{
 
 
 	public List<Tipotelefone> getTipotelefones() {
-		return tipotelefoneService.listar(tipotelefone);
+		return tipotelefoneService.listar();
 	}
 
 

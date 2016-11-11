@@ -14,7 +14,7 @@
 			 <label for="descricao">Descrição:</label>
          <p:inputText id="descricao" value="#{tipotelefoneMB.tipotelefone.descricaoTipoTelefone}" />
          
-         <p:commandButton action="#{tipotelefoneMB.incluir()}" value="Cadastro" ></p:commandButton>
+         <p:commandButton action="#{tipotelefoneMB.incluir()}" value="Cadastro" update="@form"></p:commandButton>
 
 			</h:panelGrid>
 		</h:form>

@@ -28,13 +28,6 @@
 					var="T" itemValue="#{T.idTipoInfracao}"
 					itemLabel="#{T.descricaoTipoInfracao}"
 					completeMethod="#{tipoInfracaoMB.tipoinfracaoService.listar()}" />
-					
-					
-				<label for="tipo">Placa: </label>
-				<p:autoComplete id="placa" value="#{infracaoMB.idTipoInfracao}"
-					var="T" itemValue="#{T.placa}"
-					itemLabel="#{T.placa}"
-					completeMethod="#{infracaoMB.veiculoService.listarTodos()}" />
 
 				<label for="velocidade">Velocidade: </label>
 				<p:inputText id="velocidade"

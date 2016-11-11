@@ -33,6 +33,14 @@ public class InfracaoBean implements Serializable{
 	private Integer idAgente;
 	private Integer placaVeiculo;
 	
+	public Integer getPlacaVeiculo() {
+		return placaVeiculo;
+	}
+
+	public void setPlacaVeiculo(Integer placaVeiculo) {
+		this.placaVeiculo = placaVeiculo;
+	}
+
 	private List<Infracoes> infracoes;
 	
 	public InfracaoBean() {
@@ -48,15 +56,13 @@ public class InfracaoBean implements Serializable{
 	@Inject
 	LocalInfracaoService localInfracaoService;
 	@Inject
-	private
 	VeiculoService veiculoService;
 	
-	
+
 	public void incluir() {
 		this.infracoe.setAgente(agenteService.buscar(idAgente));
 		this.infracoe.setLocalInfracao(localInfracaoService.buscar(idLocalInfracao));
 		this.infracoe.setTipoInfracao(tipoInfracaoService.buscar(idTipoInfracao));
-		this.infracoe.setVeiculo(getVeiculoService().buscar(placaVeiculo));
 		
 		infracoesService.incluir(infracoe);
 		NovaInfracoe();
@@ -126,13 +132,4 @@ public class InfracaoBean implements Serializable{
 	public void setIdAgente(Integer idAgente) {
 		this.idAgente = idAgente;
 	}
-
-	public VeiculoService getVeiculoService() {
-		return veiculoService;
-	}
-
-	public void setVeiculoService(VeiculoService veiculoService) {
-		this.veiculoService = veiculoService;
-	}
-
 }

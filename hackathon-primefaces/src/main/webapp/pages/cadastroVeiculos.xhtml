@@ -9,14 +9,20 @@
 		<h:form>
 			<h:panelGrid columns="2">
 
-				<label for="tipo">Proprietario: </label>
-				<p:autoComplete id="tipo" value="#{proprietarioMB.proprietario.cpfProprietario}" completeMethod="#{proprietarioMB.proprietarioService.listar(proprietario)}" />
+				<label for="modelo">Proprietario: </label>
+				<p:autoComplete id="proprietario" value="#{veiculoBean.idProprietario}" var="t" itemValue="#{t.nome}" itemLabel="#{t.cpfProprietario}" completeMethod="#{veiculoBean.listarTodosVeiculos()}" />
 
 				<label for="modelo">Modelo: </label>
-				<p:autoComplete id="modelo" value="#{modeloMB.modelo.idModelo}" completeMethod="#{modeloMB.modeloService.listar(modelo)}" />
+				<p:autoComplete id="modelo" value="#{veiculoBean.idModelo}" var="t" itemValue="#{t.idModelo}" itemLabel="#{t.descricaoModelo}" completeMethod="#{modeloMB.modeloService.listar(modelo)}" />
 
+				<label for="uf">UF: </label>
+				<p:selectOneMenu id="uf" value="#{veiculoBean.veiculos.uf}" style="width:125px">
+            		<f:selectItem itemLabel="Escolha seu estado" itemValue="" />
+            		<f:selectItem itemLabel="Distrito Federal" itemValue="DF" />
+            	<f:selectItem itemLabel="Goiás" itemValue="GO" />
+       			 </p:selectOneMenu>
 				
-				<p:commandButton action="#{telefonesMB.incluir()}" value="Incluir"></p:commandButton>
+				<p:commandButton action="#{veiculoBeanMB.incluir()}" value="Incluir"></p:commandButton>
 
 			</h:panelGrid>
 		</h:form>
