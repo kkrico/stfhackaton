@@ -14,65 +14,40 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Denuncia implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(length = 400)
-    private String descricao;
+	@Column(length = 400)
+	private String descricao;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false)
-    private Denunciante denunciante;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(nullable = false)
+	private Denunciante denunciante;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false)
-    private Endereco endereco;
+	public Long getId() {
+		return id;
+	}
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Tipo tipo;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public String getDescricao() {
+		return descricao;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-    public String getDescricao() {
-        return descricao;
-    }
+	public Denunciante getDenunciante() {
+		return denunciante;
+	}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Denunciante getDenunciante() {
-        return denunciante;
-    }
-
-    public void setDenunciante(Denunciante denunciante) {
-        this.denunciante = denunciante;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Tipo getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
-    }
-
+	public void setDenunciante(Denunciante denunciante) {
+		this.denunciante = denunciante;
+	}
 }

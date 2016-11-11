@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="template.xhtml">
+        <ui:define name="centro">
+
+<h:form>
+		<p:dataTable id="tabelaAgentes" var="agente" value="#{agenteBean.agentes}">
+		
+		 <p:column headerText="ID">
+        	<h:outputText value="#{agente.dtContratacao}" />
+    	</p:column>
+    	
+    	<p:column headerText="Nome">
+        	<h:outputText value="#{agente.nome}" />
+    	</p:column>
+    	
+    	<p:column headerText="Data da Contratação">
+        	<h:outputText value="#{agente.dtContratacao}" />
+    	</p:column>
+    	
+    	<p:column headerText="Tempo de Serviço">
+        	<h:outputText value="#{agente.tempoServico}" />
+    	</p:column>	
+    	
+    	<p:column> 
+    	<p:commandButton id="alterar" value="Alterar" />
+    	</p:column>  	
+    	
+    	<p:column> 
+    	<p:commandButton id="excluir" value="Excluir" actionListener="#{agenteBean.excluir(agente.idAgente)}" />
+    	</p:column>  
+    	
+		</p:dataTable>
+</h:form>   
+            
+        </ui:define>
+    </ui:decorate>
+</html>

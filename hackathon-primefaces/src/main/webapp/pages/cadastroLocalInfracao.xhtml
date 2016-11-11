@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:decorate template="template.xhtml">
+	<ui:define name="centro">
+
+		<h:form>
+
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+				closable="true" />
+
+			<h:panelGrid columns="2">
+
+				<h:outputLabel value="Descrição: " for="descricao" />
+				<p:inputText id="descricao"
+					value="#{localInfracaooMB.localinfracao.descricaoLocalInfracao}"></p:inputText>
+
+				<h:outputLabel value="Latitude: " for="latitude" />
+				<p:inputText id="latitude"
+					value="#{localInfracaooMB.localinfracao.latitude}"></p:inputText>
+
+				<h:outputLabel value="Longitude: " for="longitude" />
+				<p:inputText id="longitude"
+					value="#{localInfracaooMB.localinfracao.longitude}"></p:inputText>
+
+				<h:outputLabel value="Velocidade Permitida: " for="velocidade" />
+				<p:inputText id="velocidade"
+					value="#{localInfracaooMB.localinfracao.velocidadePermitida}"></p:inputText>
+
+				<p:commandButton action="#{localInfracaooMB.incluir()}"
+					value="Cadastrar Local Infração"></p:commandButton>
+
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:decorate>
+</html>

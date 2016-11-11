@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="template.xhtml">
+        <ui:define name="centro">
+
+<h:form>
+		<p:dataTable id="tabelaProprietarios" var="proprietario" value="#{proprietarioMB.proprietarios}">
+		
+		 <p:column headerText="id">
+        	<h:outputText value="#{proprietario.cpfProprietario}" />
+    	</p:column>
+    	
+    	<p:column headerText="nome">
+        	<h:outputText value="#{proprietario.nome}" />
+    	</p:column>
+    	
+    	<p:column> 
+    	<p:commandButton id="alterar" value="Alterar" />
+    	</p:column>  	
+    	
+    	<p:column> 
+    	<p:commandButton id="excluir" value="Excluir" actionListener="#{proprietarioMB.excluir(proprietario.cpfProprietario)}" />
+    	</p:column>   
+    	
+		</p:dataTable>
+</h:form>   
+            
+        </ui:define>
+    </ui:decorate>
+</html>

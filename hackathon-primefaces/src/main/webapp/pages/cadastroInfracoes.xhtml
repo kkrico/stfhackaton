@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:decorate template="template.xhtml">
+	<ui:define name="centro">
+
+		<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			<h:panelGrid columns="2">
+					
+				<label for="agente">Agente: </label>
+				<p:autoComplete id="agente" value="#{infracaoMB.idAgente}"
+					var="T" itemLabel="#{T.nome}" itemValue="#{T.idAgente}"
+					completeMethod="#{agenteBean.agenteService.listar()}" />
+
+				<label for="local">Local Infração: </label>
+				<p:autoComplete id="local"
+					value="#{infracaoMB.idLocalInfracao}" var="T"
+					itemValue="#{T.idLocalInfracao}"
+					itemLabel="#{T.descricaoLocalInfracao}"
+					completeMethod="#{localInfracaooMB.localInfracaoService.listar()}" />
+
+				<label for="tipo">Tipo Infração: </label>
+				<p:autoComplete id="tipo" value="#{infracaoMB.idTipoInfracao}"
+					var="T" itemValue="#{T.idTipoInfracao}"
+					itemLabel="#{T.descricaoTipoInfracao}"
+					completeMethod="#{tipoInfracaoMB.tipoinfracaoService.listar()}" />
+					
+					
+				<label for="tipo">Placa: </label>
+				<p:autoComplete id="placa" value="#{infracaoMB.idTipoInfracao}"
+					var="T" itemValue="#{T.placa}"
+					itemLabel="#{T.placa}"
+					completeMethod="#{infracaoMB.veiculoService.listarTodos()}" />
+
+				<label for="velocidade">Velocidade: </label>
+				<p:inputText id="velocidade"
+					value="#{infracaoMB.infracoe.velocidade}"></p:inputText>
+
+				<p:commandButton action="#{infracaoMB.incluir()}" value="Incluir"></p:commandButton>
+
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:decorate>
+</html>

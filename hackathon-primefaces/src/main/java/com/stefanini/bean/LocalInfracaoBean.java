@@ -1,44 +1,66 @@
 package com.stefanini.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.stefanini.model.Agente;
 import com.stefanini.model.Localinfracao;
 import com.stefanini.service.LocalInfracaoService;
+import com.stefanini.util.Mostrar;
 
-@Named("localInfracaoBean")
+@Named("localInfracaooMB")
 @SessionScoped
-public class LocalInfracaoBean implements Serializable {
+public class LocalInfracaoBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private Localinfracao localInfracao;
 	
-	public LocalInfracaoBean() {
-		this.localInfracao = new Localinfracao();
+	Localinfracao localinfracao;
+	
+	private List<Localinfracao> localinfracoes;
+	
+	public LocalInfracaoBean(){
+		this.localinfracao = new Localinfracao();
 	}
 	
-	@Inject 
-	private LocalInfracaoService localService;
+	@Inject
+	private LocalInfracaoService localInfracaoService;
 	
-	public Localinfracao getLocalInfracao() {
-		return localInfracao;
+	public void incluir(){
+		localInfracaoService.incluir(localinfracao);
+		this.localinfracao = new Localinfracao();
+		Mostrar.MensagemSucesso("Atenção", "Cadastrado com Sucesso");
+	}
+	
+	// Gets e Sets
+
+	public Localinfracao getLocalinfracao() {
+		return localinfracao;
 	}
 
-	public void setLocalInfracao(Localinfracao localInfracao) {
-		this.localInfracao = localInfracao;
+	public void setLocalinfracao(Localinfracao localinfracao) {
+		this.localinfracao = localinfracao;
+	}
+
+	public LocalInfracaoService getLocalInfracaoService() {
+		return localInfracaoService;
+	}
+
+	public void setLocalInfracaoService(LocalInfracaoService localInfracaoService) {
+		this.localInfracaoService = localInfracaoService;
+	}
+
+	public List<Localinfracao> getLocalinfracoes() {
+		return localInfracaoService.listar();
+	}
+
+	public void setLocalinfracoes(List<Localinfracao> localinfracoes) {
+		this.localinfracoes = localinfracoes;
 	}
 	
-	public void salvar() {
-		localService.salvar(this.localInfracao);
-		this.localInfracao = new Localinfracao();
-		
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Atenção", "Inserido com sucesso"));
-	}
+	
+
 }

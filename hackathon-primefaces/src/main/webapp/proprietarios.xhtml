@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+    
+    
+<h:head>
+</h:head>
+<h:body>
+
+<h:form> 
+    <h:panelGrid columns="2">
+    
+    	<h:outputLabel value="Nome: " for="nome"/>
+    	<p:inputText id="nome" value="#{proprietarioMB.proprietario.nome}"></p:inputText>
+    	
+    	<h:outputLabel value="Endereço: " for="endereco"/>
+    	<p:inputText id="endereco" value="#{proprietarioMB.proprietario.endereco}"></p:inputText>
+    	
+    	<h:outputLabel value="Bairro: " for="bairro"/>
+    	<p:inputText id="bairro" value="#{proprietarioMB.proprietario.bairro}"></p:inputText>
+    	
+    	<h:outputLabel value="Cidade: " for="cidade"/>
+    	<p:inputText id="cidade" value="#{proprietarioMB.proprietario.cidade}"></p:inputText>
+    	
+    	<h:outputLabel value="UF: " for="uf"/>
+    	<p:selectOneMenu id="uf" value="#{proprietarioMB.proprietario.uf}" style="width:125px">
+            <f:selectItem itemLabel="Escolha seu estado" itemValue="" />
+            <f:selectItem itemLabel="Distrito Federal" itemValue="DF" />
+            <f:selectItem itemLabel="Goiás" itemValue="GO" />
+        </p:selectOneMenu>
+    	
+    	<h:outputLabel value="Sexo: " for="sexo"/>
+    	<p:selectOneRadio id="sexo" value="#{proprietarioMB.proprietario.sexo}">
+            <f:selectItem itemLabel="Masculino" itemValue="M" />
+            <f:selectItem itemLabel="Feminimo" itemValue="F" />
+        </p:selectOneRadio>
+    	
+    	<h:outputLabel value="Data Nascimento: " for="dtNascimento"/>
+    	<p:calendar id="dtNascimento" pattern="dd/dd/yyyy" value="#{proprietarioMB.proprietario.dtNascimento}" locale="pt_BR" ></p:calendar>
+    	
+    	<p:commandButton action="#{proprietarioMB.incluir()}" value="Cadastrar Proprietario" ></p:commandButton>
+    
+    </h:panelGrid>
+</h:form>   
+
+</h:body>
+
+
+</html>

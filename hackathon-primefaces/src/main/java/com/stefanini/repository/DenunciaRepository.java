@@ -2,13 +2,11 @@ package com.stefanini.repository;
 
 import java.util.List;
 
-import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import com.stefanini.model.Denuncia;
 
-@Dependent
 public class DenunciaRepository {
 
 	@Inject
@@ -27,10 +25,7 @@ public class DenunciaRepository {
 	}
 
 	public List<Denuncia> lista() {
-		return this.manager.createQuery("select c from Denuncia c", Denuncia.class).getResultList();
+		return this.manager.createQuery("select c from denuncia c", Denuncia.class)
+				.getResultList();
 	}
 }
-
-
-
-

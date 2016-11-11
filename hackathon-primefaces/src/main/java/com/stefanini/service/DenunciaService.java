@@ -1,8 +1,8 @@
 package com.stefanini.service;
 
-import java.util.List;
-
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import com.stefanini.model.Denuncia;
@@ -11,16 +11,11 @@ import com.stefanini.repository.DenunciaRepository;
 @Stateless
 public class DenunciaService {
 
-	
-	@Inject
-  	private DenunciaRepository denunciaRepository;
-	
-	public List<Denuncia> listar() {
-		return denunciaRepository.lista();
-	}
+    @Inject
+    private DenunciaRepository denunciaRepository;
 
-	public void salvar(Denuncia denuncia) {
-		denunciaRepository.incluir(denuncia);
-	}
-
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public void incluir(Denuncia denuncia){
+        denunciaRepository.incluir(denuncia);
+    }
 }

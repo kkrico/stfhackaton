@@ -1,17 +1,31 @@
 package com.stefanini.service;
 
-import java.io.Serializable;
+import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.inject.Inject;
+
+import com.stefanini.model.Proprietario;
 import com.stefanini.model.Telefones;
-import com.stefanini.repository.TelefoneRepository;
+import com.stefanini.model.Tipotelefone;
+import com.stefanini.repository.TelefonesRepository;
 
-public class TelefoneService implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-	private TelefoneRepository telefoneRepository;
-
-	public void salvar(Telefones telefone) {
-		
-		telefoneRepository.salvar(telefone);
+@Stateless
+public class TelefoneService {
+	
+	@Inject
+	private TelefonesRepository telefonesRepository;
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void incluir(Telefones telefones){
+		telefonesRepository.incluir(telefones);
 	}
+
+	public Tipotelefone buscar(Integer idTipoTelefone) {
+		// TODO Auto-generated method stub
+		return telefonesRepository.buscar(idTipoTelefone);
+	}
+
 }

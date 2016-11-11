@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:decorate template="template.xhtml">
+	<ui:define name="centro">
+
+		<h:form>
+			<h:panelGrid columns="2">
+
+				<label for="tipo">Proprietario: </label>
+				<p:autoComplete id="tipo" value="#{proprietarioMB.proprietario.cpfProprietario}" completeMethod="#{proprietarioMB.proprietarioService.listar(proprietario)}" />
+
+				<label for="modelo">Modelo: </label>
+				<p:autoComplete id="modelo" value="#{modeloMB.modelo.idModelo}" completeMethod="#{modeloMB.modeloService.listar(modelo)}" />
+
+				
+				<p:commandButton action="#{telefonesMB.incluir()}" value="Incluir"></p:commandButton>
+
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:decorate>
+</html>

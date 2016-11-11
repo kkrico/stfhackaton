@@ -8,6 +8,12 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class TelefonesKey implements Serializable {
 
+	public TelefonesKey(){}
+	
+	public TelefonesKey(int ddd, int numero){
+		this.ddd = ddd;
+		this.numero = numero;
+	}
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "numero", nullable = false)
@@ -55,6 +61,4 @@ public class TelefonesKey implements Serializable {
 			return false;
 		return true;
 	}
-
-	
 }

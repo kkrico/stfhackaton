@@ -1,45 +1,42 @@
 package com.stefanini.service;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
+import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import com.stefanini.model.Agente;
+import com.stefanini.model.Proprietario;
 import com.stefanini.repository.AgenteRepository;
 
 @Stateless
-public class AgenteService implements Serializable {
+public class AgenteService {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Inject
 	private AgenteRepository agenteRepository;
-
-	public Collection<Agente> todosOsAgentes() {
-		
-		return agenteRepository.todos();
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void incluir(Agente agente){
+		agenteRepository.incluir(agente);
 	}
-
-	public void salvar(Agente agente) {
-		
-		agenteRepository.salvar(agente);
+	
+	public Agente buscar(Integer idAgente){
+		return agenteRepository.buscar(idAgente);
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public List<Agente> listar(){
+		return agenteRepository.listaTodos();
+	}
+	
+	public void excluir(Integer idAgente){
+		agenteRepository.excluir(idAgente);
 	}
 
 	public void atualizar(Agente agente) {
-	
 		agenteRepository.atualizar(agente);
-		
 	}
 
-	public void remover(Integer id) {
-		agenteRepository.remover(id);
-		
-	}
 }

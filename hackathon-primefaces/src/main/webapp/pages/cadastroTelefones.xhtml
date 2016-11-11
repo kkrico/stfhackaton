@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:decorate template="template.xhtml">
+	<ui:define name="centro">
+
+<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+		<h:form>
+			<h:panelGrid columns="2">
+			
+			<label for="ddd">DDD: </label>
+			<p:inputText id="ddd" value="#{telefonesMB.ddd}"></p:inputText>
+			
+			<label for="numero">Numero: </label>
+			<p:inputText id="numero" value="#{telefonesMB.numero}"></p:inputText>
+			
+			<label for="tipo">Tipo: </label>
+			<p:autoComplete id="tipo" value="#{telefonesMB.idTipoTelefone}" var="T" itemValue="#{T.idTipoTelefone}" itemLabel="#{T.descricaoTipoTelefone}"  completeMethod="#{tipotelefoneMB.tipotelefoneService.listar()}" />
+			
+			<label for="tipo">Proprietario: </label>
+			<p:autoComplete id="proprietario" value="#{telefonesMB.cpfProprietario}" var="T" itemValue="#{T.cpfProprietario}" itemLabel="#{T.nome}"  completeMethod="#{telefonesMB.proprietarioService.listar()}" />
+			
+			<p:commandButton action="#{telefonesMB.incluir()}" value="Incluir" ></p:commandButton>
+			
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:decorate>
+</html>

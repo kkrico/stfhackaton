@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="template.xhtml">
+        <ui:define name="centro">
+
+<h:form>
+		<p:dataTable id="tabelaInfracoes" var="infracao" value="#{infracaoMB.infracoes}">
+		
+		 <p:column headerText="infração">
+        	<h:outputText value="#{infracao.idInfracao}" />
+    	</p:column>
+    
+    	
+    	<p:column headerText="Data da Contratação">
+        	<h:outputText value="#{infracao.placa}" />
+    	</p:column>
+    	
+    	<p:column headerText="Velocidade">
+        	<h:outputText value="#{infracao.velocidade}" />
+    	</p:column>		
+    	
+    	<p:column> 
+    	<p:commandButton id="ver" value="Mapa" actionListener="#{infracaoMB.chamar(infracao)}" />
+    	</p:column>  
+    	
+		</p:dataTable>
+</h:form>   
+            
+        </ui:define>
+    </ui:decorate>
+</html>

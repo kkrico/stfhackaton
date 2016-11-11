@@ -11,15 +11,16 @@ import javax.persistence.PersistenceUnit;
 @ApplicationScoped
 public class EntityManagerProducer {
 
-	@PersistenceUnit(unitName="hackathon")
+	@PersistenceUnit(unitName = "hackathon")
 	private EntityManagerFactory factory;
 
-	@Produces @RequestScoped
-	public EntityManager getEntityManager(){
+	@Produces
+	@RequestScoped
+	public EntityManager getEntityManager() {
 		return factory.createEntityManager();
 	}
 
-	public void close(@Disposes EntityManager manager){
+	public void close(@Disposes EntityManager manager) {
 		manager.close();
 	}
 }

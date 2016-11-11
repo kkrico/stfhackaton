@@ -1,9 +1,6 @@
 package com.stefanini.controller;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -29,16 +26,16 @@ public class AgenteController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Agente> get() {
 
-		return this.agenteService.todosOsAgentes();
+		return this.agenteService.listar();
 	}
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public void post(Agente agente) {
-		this.agenteService.salvar(agente);
+		this.agenteService.incluir(agente);
 	}
-	
+
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -46,13 +43,12 @@ public class AgenteController {
 	public void put(Agente agente) {
 		this.agenteService.atualizar(agente);
 	}
-	
-	
+
 	@POST
 	@Path("deletar/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public void deletar(Integer id) {
-		this.agenteService.remover(id);
+		this.agenteService.excluir(id);
 	}
 }
