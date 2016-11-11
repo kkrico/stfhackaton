@@ -1,7 +1,10 @@
 App.factory('InfracaoService', function($http, API){
 	return {
+		listGrafico: function() {
+			return $http.get(API + 'infracoesDaniel/InfracoesUsuarioGrafico')
+		},
 		list: function(){
-			return $http.get(API+'agente');
+			return $http.get(API+'infracoesDaniel');
 		},
 		listLocalInfracoes: function(){
 			return $http.get(API+'infracoes/local');

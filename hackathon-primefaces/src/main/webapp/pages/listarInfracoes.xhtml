@@ -1,42 +1,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-    <ui:decorate template="template.xhtml">
-        <ui:define name="centro">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:decorate template="template.xhtml">
+	<ui:define name="centro">
 
-<h:form>
-		<p:dataTable id="tabelaInfracoes" var="infracao" value="#{infracaoMB.infracoes}">
-		
-		 <p:column headerText="infração">
-        	<h:outputText value="#{infracao.id}" />
-    	</p:column>
-    
-    	
-    	<p:column headerText="Agente">
-        	<h:outputText value="#{infracao.agente.nome}" />
-    	</p:column>
-    	
-    	<p:column headerText="LocalInfracao">
-        	<h:outputText value="#{infracao.localInfracao.descricaoLocalInfracao}" />
-    	</p:column>	
-    	
-    	<p:column headerText="TipoInfracao">
-        	<h:outputText value="#{infracao.tipoInfracao.descricaoTipoInfracao}" />
-    	</p:column>	
-    	
-    	<p:column headerText="Velocidade">
-        	<h:outputText value="#{infracao.velocidade}" />
-    	</p:column>	
-    	
-    	<p:column> 
-    	<p:commandButton id="ver" value="Mapa" actionListener="#{infracaoMB.chamar(infracao)}" update="@form"/>
-    	</p:column>  
-    	
-		</p:dataTable>
-</h:form>   
-            
-        </ui:define>
-    </ui:decorate>
+		<h:form>
+			<p:dataTable id="tabelaInfracoes" var="infracao"
+				value="#{infracaoMB.infracoes}">
+
+				<p:column headerText="infração">
+					<h:outputText value="#{infracao.id}" />
+				</p:column>
+
+
+				<p:column headerText="Agente">
+					<h:outputText value="#{infracao.agente.nome}" />
+				</p:column>
+
+				<p:column headerText="LocalInfracao">
+					<h:outputText
+						value="#{infracao.localInfracao.descricaoLocalInfracao}" />
+				</p:column>
+
+				<p:column headerText="TipoInfracao">
+					<h:outputText
+						value="#{infracao.tipoInfracao.descricaoTipoInfracao}" />
+				</p:column>
+
+				<p:column headerText="Velocidade">
+					<h:outputText value="#{infracao.velocidade}" />
+				</p:column>
+
+				<p:column>
+					<p:commandButton id="ver" value="Mapa"
+						actionListener="#{infracaoMB.carregar(infracao)}" update="@form" />
+				</p:column>
+
+			</p:dataTable>
+
+			<p:gmap center="#{infracaoMB.latitude}, #{infracaoMB.longitude}"
+				zoom="15" type="HYBRID" style="width:100%;height:400px" />
+		</h:form>
+
+	</ui:define>
+</ui:decorate>
 </html>

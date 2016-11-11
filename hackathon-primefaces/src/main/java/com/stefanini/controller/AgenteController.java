@@ -47,7 +47,7 @@ public class AgenteController {
 		Agente agente = new Agente();
 		agente.setIdAgente(id);
 		System.out.println("id to delete" + id);
-		this.agenteService.deleta(id);
+		this.agenteService.excluir(id);
 	}
 
 }

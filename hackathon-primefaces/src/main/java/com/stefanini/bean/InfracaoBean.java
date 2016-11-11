@@ -7,9 +7,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -36,6 +33,8 @@ public class InfracaoBean implements Serializable {
 	private Integer idLocalInfracao;
 	private Integer idAgente;
 	private Integer placaVeiculo;
+	private Double latitude = null;
+	private Double longitude = null;
 
 	private Collection<Agente> agentes;
 	private Collection<Localinfracao> localInfracoes;
@@ -138,8 +137,11 @@ public class InfracaoBean implements Serializable {
 		infracoesService.excluir(idInfracao);
 	}
 
-	public String chamar() {
-		return "/pages/Infracao.xhtml";
+	public void carregar(Infracoes infracao) throws IOException {
+		this.infracao = infracoesService.buscar(infracao.getId());
+			
+		this.latitude = infracao.getLocalInfracao().getLatitude();
+		this.longitude = infracao.getLocalInfracao().getLongitude();
 	}
 
 	// Gets e Sets
@@ -214,5 +216,21 @@ public class InfracaoBean implements Serializable {
 
 	public void setTipoInfracoes(Collection<Tipoinfracao> tipoInfracoes) {
 		this.tipoInfracoes = tipoInfracoes;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
 	}
 }

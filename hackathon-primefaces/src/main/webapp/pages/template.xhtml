@@ -5,7 +5,8 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtRWoWocgAvKjMcdAbJdZfa3og9MdzlBw" />
 </h:head>
 <h:body>
 
@@ -13,27 +14,40 @@
 	<ui:insert name="menu">
 		<h:form>
 			<p:menubar>
-			<p:menuitem value="Home" url="index.xhtml" icon="ui-icon-document" />
+				<p:menuitem value="Home" url="index.xhtml" icon="ui-icon-document" />
 				<p:submenu label="Agente" icon="ui-icon-document">
-					<p:menuitem value="Cadastro" url="cadastroAgente.xhtml" icon="ui-icon-document" />
-					<p:menuitem value="Listar" url="listarAgentes.xhtml" icon="ui-icon-refresh" />
+					<p:menuitem value="Cadastro" url="cadastroAgente.xhtml"
+						icon="ui-icon-document" />
+					<p:menuitem value="Listar" url="listarAgentes.xhtml"
+						icon="ui-icon-refresh" />
 				</p:submenu>
 				<p:submenu label="Proprietario" icon="ui-icon-document">
-					<p:menuitem value="Cadastro" url="cadastroProprietarios.xhtml" icon="ui-icon-document" />
-					<p:menuitem value="Listar" url="listarProprietarios.xhtml" icon="ui-icon-refresh" />
+					<p:menuitem value="Cadastro" url="cadastroProprietarios.xhtml"
+						icon="ui-icon-document" />
+					<p:menuitem value="Listar" url="listarProprietarios.xhtml"
+						icon="ui-icon-refresh" />
 				</p:submenu>
 				<p:submenu label="Infração" icon="ui-icon-document">
-					<p:menuitem value="Cadastro Infração" url="cadastroInfracoes.xhtml" icon="ui-icon-document" />
-					<p:menuitem value="Cadastro Tipo Infração" url="cadastroTipoInfracao.xhtml" icon="ui-icon-document" />
-					<p:menuitem value="Cadastro Local Infração" url="cadastroLocalInfracao.xhtml" icon="ui-icon-document" />
+					<p:menuitem value="Cadastro Infração" url="cadastroInfracoes.xhtml"
+						icon="ui-icon-document" />
+					<p:menuitem value="Cadastro Tipo Infração"
+						url="cadastroTipoInfracao.xhtml" icon="ui-icon-document" />
+					<p:menuitem value="Cadastro Local Infração"
+						url="cadastroLocalInfracao.xhtml" icon="ui-icon-document" />
+					<p:menuitem value="Listar Infração"
+						url="listarInfracoes.xhtml" icon="ui-icon-document" />
 				</p:submenu>
 				<p:submenu label="Telefone" icon="ui-icon-document">
-					<p:menuitem value="Cadastro Telefone" url="cadastroTelefones.xhtml" icon="ui-icon-document" />
-					<p:menuitem value="Cadastro Tipo Telefone" url="cadastroTipoTelefone.xhtml" icon="ui-icon-document" />
+					<p:menuitem value="Cadastro Telefone" url="cadastroTelefones.xhtml"
+						icon="ui-icon-document" />
+					<p:menuitem value="Cadastro Tipo Telefone"
+						url="cadastroTipoTelefone.xhtml" icon="ui-icon-document" />
 				</p:submenu>
 				<p:submenu label="Veiculos" icon="ui-icon-document">
-					<p:menuitem value="Cadastro Veiculo" url="cadastroVeiculos.xhtml" icon="ui-icon-document" />
-					<p:menuitem value="Cadastro do Veiculo" url="cadastroVeiculos.xhtml" icon="ui-icon-document" />
+					<p:menuitem value="Cadastro Veiculo" url="cadastroVeiculos.xhtml"
+						icon="ui-icon-document" />
+					<p:menuitem value="Cadastro do Veiculo"
+						url="cadastroVeiculos.xhtml" icon="ui-icon-document" />
 				</p:submenu>
 			</p:menubar>
 		</h:form>

@@ -5,12 +5,12 @@ var App = angular.module('App', [
 'ngSanitize', 
 'ui.select',
 'ui.event',
-'ui.map'
+'ui.map',
+'chart.js'
 ]);
 
 App.config(function($routeProvider){
 	$routeProvider
-	
 	.when('/', {
 		templateUrl: 'views/agente/agente.html',
 		controller: 'AgenteCtrl'
@@ -35,6 +35,11 @@ App.config(function($routeProvider){
 		templateUrl: 'views/infracao/infracao.html',
 		controller: 'InfracaoCtrl'
 	})
+	.when('/listarInfracao', {
+		templateUrl: 'views/infracao/listarInfracao.html',
+		controller: 'InfracaoCtrl'
+	})
+	.otherwise({redirectTo:'/'});
 });
 
 App.value('API', 'http://localhost:8080/primefaces-app/service/');

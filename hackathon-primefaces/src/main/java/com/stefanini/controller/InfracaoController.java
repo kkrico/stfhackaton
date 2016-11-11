@@ -19,7 +19,8 @@ import com.stefanini.model.Tipoinfracao;
 import com.stefanini.service.AgenteService;
 import com.stefanini.service.InfracoesService;
 import com.stefanini.service.LocalInfracaoService;
-import com.stefanini.service.TipoInfracaoService;
+
+import com.stefanini.service.TipoinfracaoService;
 
 @Path("/infracoes")
 @RequestScoped
@@ -39,8 +40,7 @@ public class InfracaoController {
 	
 
 	@Inject
-	private TipoInfracaoService tipoInfracaoService;
-	
+	private TipoinfracaoService tipoInfracaoService;
 	
 	//Listar Locais de infração
 	@GET
@@ -54,7 +54,7 @@ public class InfracaoController {
 		@GET
 		@Path("/tipo")
 		@Produces(MediaType.APPLICATION_JSON)
-		public List<Tipoinfracao> getInfracao() {
+	public List<Tipoinfracao> getInfracao() {
 			System.out.println("called");
 			return tipoInfracaoService.listar();
 		}
@@ -69,14 +69,14 @@ public class InfracaoController {
 					agenteService.buscar(idAgente);
 					
 					System.out.println("called idTipoInfracao: " + idTipoInfracao);
-					tipoInfracaoService.busca(idTipoInfracao);
+					tipoInfracaoService.buscar(idTipoInfracao);
 					
 					System.out.println("called idLocalInfracao: " + idLocalInfracao);
-					localInfracaoService.busca(idLocalInfracao);
+					localInfracaoService.buscar(idLocalInfracao);
 					
 					infracao.setAgente(agenteService.buscar(idAgente));
-					infracao.setTipoInfracao(tipoInfracaoService.busca(idTipoInfracao));
-					infracao.setLocalInfracao(localInfracaoService.busca(idLocalInfracao));
+					infracao.setTipoInfracao(tipoInfracaoService.buscar(idTipoInfracao));
+					infracao.setLocalInfracao(localInfracaoService.buscar(idLocalInfracao));
 					infracao.setVelocidade(170);
 					infracoesService.incluir(infracao);
 					

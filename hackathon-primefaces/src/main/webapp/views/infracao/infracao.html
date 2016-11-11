@@ -3,8 +3,6 @@
 </div>
 <div class="row">
 	<form class="form-horizontal" ng-submit="cadastrar(tipo)">
-
-		<p>infracao: {{infracao}}</p>
 		<p>Agente</p>
 		<ui-select ng-model="infracao.agente" theme="selectize"
 			style="width: 300px;" title="Choose a country"> <ui-select-match
@@ -30,7 +28,7 @@
 		</ui-select>
 		
 		<br/>
-		<br/><button ng-click="getCurrentLocation2()" class="btn btn-success">Carregar mapa</button>
+		<br/><button ng-click="getCurrentLocation()" class="btn btn-success">Carregar mapa</button>
 		<button ng-click="salvar()" class="btn btn-success">Salvar</button>
 		<input type="text" ng-model="infracao.localInfracacao.velocidadePermitida" class="form-control" placeholder="Velocidade Permitida">
 		<input class="col-sm-6" ng-value="result" ng-model="endereco"
