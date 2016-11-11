@@ -1,0 +1,52 @@
+<div class="row">
+	<h2>Cadastro de Infracao</h2>
+</div>
+<div class="row">
+	<form class="form-horizontal" ng-submit="cadastrar(tipo)">
+
+		<p>infracao: {{infracao}}</p>
+		<p>Agente</p>
+		<ui-select ng-model="infracao.agente" theme="selectize"
+			style="width: 300px;" title="Choose a country"> <ui-select-match
+			placeholder="Selecione o agente...">{{$select.selected.nome}}</ui-select-match>
+		<ui-select-choices repeat="agente in agentes | filter: $select.search">
+		<span ng-bind-html="agente.nome | highlight: $select.search"></span> </ui-select-choices>
+		</ui-select>
+		
+		<p>Local da infração</p>
+		<ui-select ng-model="infracao.localInfracao" theme="selectize"
+			style="width: 300px;" title="Choose a country"> <ui-select-match
+			placeholder="Selecione o local da infração...">{{$select.selected.descricaoLocalInfracao}}</ui-select-match>
+		<ui-select-choices  repeat="local in localInfracoes | filter: $select.search">
+		<span ng-click="setLocal(local)" ng-bind-html="local.descricaoLocalInfracao | highlight: $select.search"></span> </ui-select-choices>
+		</ui-select>
+		
+		<p>Tipo de infração</p>
+		<ui-select ng-model="infracao.tipoInfracao" theme="selectize"
+			style="width: 300px;" title="Tipo da infração"> <ui-select-match
+			placeholder="Select or search a country in the list...">{{$select.selected.descricaoTipoInfracao}}</ui-select-match>
+		<ui-select-choices repeat="tipo in TipoInfracoes | filter: $select.search">
+		<span ng-bind-html="tipo.descricaoTipoInfracao | highlight: $select.search"></span> </ui-select-choices>
+		</ui-select>
+		
+		<br/>
+		<br/><button ng-click="getCurrentLocation2()" class="btn btn-success">Carregar mapa</button>
+		<button ng-click="salvar()" class="btn btn-success">Salvar</button>
+		<input type="text" ng-model="infracao.localInfracacao.velocidadePermitida" class="form-control" placeholder="Velocidade Permitida">
+		<input class="col-sm-6" ng-value="result" ng-model="endereco"
+			type="text" class="form-control" />
+			<br/>
+			
+		<div id="map_canvas" ui-map="myMap"
+			style="height: 400px; width: 1130px; border: 2px solid #777777; margin: 3px; border: 1px solid"
+			ui-options="mapOptions"
+			ui-event="{'map-idle' : 'onMapIdle()' , 'map-dragend' : 'draged()'}">
+			
+			
+
+			<div class="form-group">
+				<button class="btn btn-success">Cadastrar</button>
+				<a href="#/" class="btn btn-warning">Cancelar</a>
+			</div>
+	</form>
+</div>

@@ -1,14 +1,15 @@
 package com.stefanini.controller;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -21,34 +22,32 @@ public class AgenteController {
 
 	@Inject
 	private AgenteService agenteService;
-
+	
+	//Lista
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Agente> get() {
-
-		return this.agenteService.listar();
+	public List<Agente> get() {
+		return agenteService.listar();
 	}
 
+	//Create
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public void post(Agente agente) {
 		this.agenteService.incluir(agente);
 	}
-
-	@PUT
-	@Path("/{id}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public void put(Agente agente) {
-		this.agenteService.atualizar(agente);
-	}
-
+	
+	//Delete
 	@POST
-	@Path("deletar/{id}")
+	@Path("{id}/delete")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public void deletar(Integer id) {
-		this.agenteService.excluir(id);
+	public void post(@PathParam("id") Integer id) {
+		Agente agente = new Agente();
+		agente.setIdAgente(id);
+		System.out.println("id to delete" + id);
+		this.agenteService.deleta(id);
 	}
+
 }

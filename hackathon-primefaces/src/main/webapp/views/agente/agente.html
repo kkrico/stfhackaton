@@ -3,8 +3,8 @@
 	<h2 class="text-center"><u>Lista de Agentes Cadastrados</u></h2>
 </div>
 <div class="row">
-<a ng-click="adicionar(item)" class="btn btn-primary">Cadastrar</a>
-<a href="#/novoTelefone" class="btn btn-default">Novo Telefone</a>
+<a href="#/createAgente" class="btn btn-primary">Cadastrar</a>
+<a href="#/novaInfracao" class="btn btn-primary">Cadastrar infrção</a>
 </div>
 <br/>
 <div class="row">
@@ -13,24 +13,20 @@
 		<tr>
 			<td>ID</td>
 			<td>Nome</td>
-			<td>Data Contratacao</td>
-			<td>Tempo de Servico</td>
 			<td></td>
 			<td></td>
 		</tr>
 	</thead>
+	{{data}}
 	<tbody>
-		<tr ng-repeat="item in agente">
+		<tr ng-repeat="item in agentes">
 		<td>{{item.idAgente}}</td>
 		<td>{{item.nome}}</td>
-		<td>{{item.dtContratacao}}</td>
-		<td>{{item.tempoServico}}</td>
-		<!-- <td><a href="#/editarAgente/{{item.idAgente}}" class="btn btn-info btn-block">Editar</a></td> -->
 		<td><button ng-click="editar(item)" class="btn btn-info btn-block">Editar</button></td>
 		<td><button ng-click="deletar(item.idAgente)" class="btn btn-danger btn-block">Deletar</button></td>
 		</tr>
 		<tr ng-show="notFound" class="text-center">
-			<td colspan="4">Não tem registros</td>
+			<td colspan="4">N�o tem registros</td>
 		</tr>
 	</tbody>
 </table>

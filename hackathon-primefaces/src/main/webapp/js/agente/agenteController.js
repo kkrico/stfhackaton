@@ -1,48 +1,45 @@
-App.controller('AgenteCtrl', function($scope, AgenteService, $route,$routeParams,$location,EnvioService){
-	$scope.agente = [];
-	$scope.agenteEditar = {};
+var App = angular.module('controllers', []);
 
+App.controller('AgenteCtrl', function($scope, $location, AgenteService,EnvioService, $route){
+	$scope.agentes = [];
 	$scope.notFound = false;
 	AgenteService.list().then(function(data){
-		$scope.agente = data.data;
+		$scope.agentes = data.data;
+		console.log("",$scope.agentes);
 		if(data.data.length == 0){
 			$scope.notFound = true;
 		}
 	},function(data){
 		console.log("data", data);
 	});
-	$scope.agenteEditar = EnvioService.getParametro();
 	
+	$scope.agenteEditar = EnvioService.getParametro();
+	console.log("editar",$scope.agenteEditar);
+	
+	//Deletar
 	$scope.deletar = function(id){
-		debugger;
 		AgenteService.delete(id).then(function(data){
-			debugger;
+			console.log(data);
 			$route.reload();
 		});	
 	}
 	
+	//Editar
 	$scope.editar = function(item){
 		$scope.agenteEditar = {};
 		EnvioService.addParametro(item);
 		$location.path('/editarAgente');
 	}
 	
-	$scope.adicionar = function(item) {
-		$scope.agenteEditar = {};
-		EnvioService.addParametro(item);
-		$location.path('/create');
-	}
 
-	$scope.atualizar = function(item){
-		AgenteService.update(item, item.idAgente).then(function(data){
-				$location.path('/');
-			});
+	$scope.newAgente = {};
+	
+	//Criar
+	$scope.criar = function(){
+		AgenteService.create($scope.newAgente);
+		$location.path('/');
 	}
 	
-	$scope.criar = function(item) {
-		AgenteService.create(item).then(function(data) {
-			debugger;
-			$location.path('/');
-		});
-	}
+	
+
 });

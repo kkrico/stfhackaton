@@ -2,6 +2,7 @@ var App = angular.module('controllers', []);
 
 App.controller('ReadCtrl', function($scope, Tipo, $route){
 	$scope.tipo = [];
+	$scope.lop = "data";
 	$scope.notFound = false;
 	Tipo.list().then(function(data){
 		$scope.tipo = data.data;
@@ -11,13 +12,7 @@ App.controller('ReadCtrl', function($scope, Tipo, $route){
 	},function(data){
 		console.log("data", data);
 	});
-
-	$scope.deletar = function(id){
-		Tipo.delete(id).then(function(data){
-			console.log(data);
-			$route.reload();
-		});	
-	}
+	
 });	
 
 App.controller('CreateCtrl', function($scope, Tipo, $location){
