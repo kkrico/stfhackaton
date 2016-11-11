@@ -1,9 +1,11 @@
 package com.stefanini.bean;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,15 +32,25 @@ public class AgenteBean implements Serializable {
 	private AgenteService agenteService;
 
 	public void incluir() {
-		agenteService.incluir(agente);
-		this.agente = new Agente();
-		Mostrar.MensagemSucesso("Atenção", "Cadastrado com Sucesso");
+		if(agente.getIdAgente() == null){
+			agenteService.incluir(agente);
+			this.agente = new Agente();
+			Mostrar.MensagemSucesso("Atenção", "Cadastrado com Sucesso");
+		}
+			agenteService.atualizar(agente);
+		
+		Mostrar.MensagemSucesso("Atenção", "Alterado com Sucesso");
 	}
 	
 	public void excluir(Integer idAgente) {
 		agenteService.excluir(idAgente);
 	}
 	
+	public void carregar(Agente agente) throws IOException{
+		this.agente = agenteService.buscar(agente.getIdAgente());
+		System.out.println(agente.getIdAgente());
+		FacesContext.getCurrentInstance().getExternalContext().redirect("alterarAgente.xhtml");
+	}
 	// Gets e Sets
 	
 	public Agente getAgente() {

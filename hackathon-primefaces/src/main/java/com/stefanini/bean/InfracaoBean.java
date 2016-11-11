@@ -2,8 +2,10 @@ package com.stefanini.bean;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -14,6 +16,8 @@ import javax.inject.Named;
 
 import com.stefanini.model.Agente;
 import com.stefanini.model.Infracoes;
+import com.stefanini.model.Localinfracao;
+import com.stefanini.model.Tipoinfracao;
 import com.stefanini.service.AgenteService;
 import com.stefanini.service.InfracoesService;
 import com.stefanini.service.LocalInfracaoService;
@@ -23,16 +27,27 @@ import com.stefanini.util.Mostrar;
 
 @Named("infracaoMB")
 @RequestScoped
-public class InfracaoBean implements Serializable{
+public class InfracaoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Infracoes infracoe;
 	private Integer idTipoInfracao;
 	private Integer idLocalInfracao;
 	private Integer idAgente;
 	private Integer placaVeiculo;
-	
+
+	private Collection<Agente> agentes;
+	private Collection<Localinfracao> localInfracoes;
+	private Collection<Tipoinfracao> tipoInfracoes;
+
+	@PostConstruct
+	public void GerarListas() {
+		this.setAgentes(agenteService.listar());
+		this.setLocalInfracoes(localInfracaoService.listar());
+		this.setTipoInfracoes(tipoInfracaoService.listar());
+	}
+
 	public Integer getPlacaVeiculo() {
 		return placaVeiculo;
 	}
@@ -42,11 +57,13 @@ public class InfracaoBean implements Serializable{
 	}
 
 	private List<Infracoes> infracoes;
-	
+
 	public InfracaoBean() {
 		this.infracoe = new Infracoes();
 	}
-	
+
+	@Inject
+	Infracoes infracao;
 	@Inject
 	InfracoesService infracoesService;
 	@Inject
@@ -57,17 +74,59 @@ public class InfracaoBean implements Serializable{
 	LocalInfracaoService localInfracaoService;
 	@Inject
 	VeiculoService veiculoService;
-	
 
 	public void incluir() {
-		this.infracoe.setAgente(agenteService.buscar(idAgente));
-		this.infracoe.setLocalInfracao(localInfracaoService.buscar(idLocalInfracao));
-		this.infracoe.setTipoInfracao(tipoInfracaoService.buscar(idTipoInfracao));
-		
+		this.infracoe.setAgente(buscarAgente(idAgente));
+		this.infracoe.setLocalInfracao(buscarLocal(idLocalInfracao));
+		this.infracoe.setTipoInfracao(buscarTipoInfracao(idTipoInfracao));
+
 		infracoesService.incluir(infracoe);
 		NovaInfracoe();
-		
+
 		Mostrar.MensagemSucesso("Atenção", "Inserido com sucesso");
+	}
+
+	private Tipoinfracao buscarTipoInfracao(Integer idTipoInfracao2) {
+
+		for (Tipoinfracao t : this.tipoInfracoes) {
+			if (idTipoInfracao2 == t.getIdTipoInfracao()) {
+				return t;
+			}
+		}
+		return null;
+	}
+
+	private Localinfracao buscarLocal(Integer idLocalInfracao2) {
+		// TODO Auto-generated method stub
+		for (Localinfracao l : this.getLocalInfracoes()) {
+			if (idLocalInfracao2 == l.getIdLocalInfracao()) {
+				return l;
+			}
+		}
+
+		return null;
+	}
+
+	private Agente buscarAgente(Integer idAgente) {
+
+		for (Agente a : this.getAgentes()) {
+			if (idAgente == a.getIdAgente()) {
+				return a;
+			}
+		}
+		return null;
+	}
+
+	public Collection<Agente> todosOsAgentes() {
+		return this.agentes;
+	}
+
+	public Collection<Localinfracao> todosOsLocaisInfracao() {
+		return this.localInfracoes;
+	}
+
+	public Collection<Tipoinfracao> todosOsTipoInfracao() {
+		return this.tipoInfracoes;
 	}
 
 	private void NovaInfracoe() {
@@ -78,11 +137,11 @@ public class InfracaoBean implements Serializable{
 	public void excluir(Integer idInfracao) {
 		infracoesService.excluir(idInfracao);
 	}
-	
-	 public String chamar(){
-		 return "/pages/Infracao.xhtml";
-	 }
-	
+
+	public String chamar() {
+		return "/pages/Infracao.xhtml";
+	}
+
 	// Gets e Sets
 
 	public Infracoes getInfracoe() {
@@ -131,5 +190,29 @@ public class InfracaoBean implements Serializable{
 
 	public void setIdAgente(Integer idAgente) {
 		this.idAgente = idAgente;
+	}
+
+	public Collection<Agente> getAgentes() {
+		return agentes;
+	}
+
+	public void setAgentes(Collection<Agente> agentes) {
+		this.agentes = agentes;
+	}
+
+	public Collection<Localinfracao> getLocalInfracoes() {
+		return localInfracoes;
+	}
+
+	public void setLocalInfracoes(Collection<Localinfracao> localInfracoes) {
+		this.localInfracoes = localInfracoes;
+	}
+
+	public Collection<Tipoinfracao> getTipoInfracoes() {
+		return tipoInfracoes;
+	}
+
+	public void setTipoInfracoes(Collection<Tipoinfracao> tipoInfracoes) {
+		this.tipoInfracoes = tipoInfracoes;
 	}
 }

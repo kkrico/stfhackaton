@@ -14,20 +14,20 @@
 				<label for="agente">Agente: </label>
 				<p:autoComplete id="agente" value="#{infracaoMB.idAgente}"
 					var="T" itemLabel="#{T.nome}" itemValue="#{T.idAgente}"
-					completeMethod="#{agenteBean.agenteService.listar()}" />
+					completeMethod="#{infracaoMB.todosOsAgentes()}" />
 
 				<label for="local">Local Infração: </label>
 				<p:autoComplete id="local"
 					value="#{infracaoMB.idLocalInfracao}" var="T"
 					itemValue="#{T.idLocalInfracao}"
 					itemLabel="#{T.descricaoLocalInfracao}"
-					completeMethod="#{localInfracaooMB.localInfracaoService.listar()}" />
+					completeMethod="#{infracaoMB.todosOsLocaisInfracao()}" />
 
 				<label for="tipo">Tipo Infração: </label>
 				<p:autoComplete id="tipo" value="#{infracaoMB.idTipoInfracao}"
 					var="T" itemValue="#{T.idTipoInfracao}"
 					itemLabel="#{T.descricaoTipoInfracao}"
-					completeMethod="#{tipoInfracaoMB.tipoinfracaoService.listar()}" />
+					completeMethod="#{infracaoMB.todosOsTipoInfracao()}" />
 
 				<label for="velocidade">Velocidade: </label>
 				<p:inputText id="velocidade"

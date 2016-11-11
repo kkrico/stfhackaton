@@ -10,17 +10,25 @@
 		<p:dataTable id="tabelaInfracoes" var="infracao" value="#{infracaoMB.infracoes}">
 		
 		 <p:column headerText="infração">
-        	<h:outputText value="#{infracao.idInfracao}" />
+        	<h:outputText value="#{infracao.id}" />
     	</p:column>
     
     	
-    	<p:column headerText="Data da Contratação">
-        	<h:outputText value="#{infracao.placa}" />
+    	<p:column headerText="Agente">
+        	<h:outputText value="#{infracao.agente.nome}" />
     	</p:column>
+    	
+    	<p:column headerText="LocalInfracao">
+        	<h:outputText value="#{infracao.localInfracao.descricaoLocalInfracao}" />
+    	</p:column>	
+    	
+    	<p:column headerText="TipoInfracao">
+        	<h:outputText value="#{infracao.tipoInfracao.descricaoTipoInfracao}" />
+    	</p:column>	
     	
     	<p:column headerText="Velocidade">
         	<h:outputText value="#{infracao.velocidade}" />
-    	</p:column>		
+    	</p:column>	
     	
     	<p:column> 
     	<p:commandButton id="ver" value="Mapa" actionListener="#{infracaoMB.chamar(infracao)}" update="@form"/>

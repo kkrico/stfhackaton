@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:decorate template="template.xhtml">
+	<ui:define name="centro">
+
+		<h:form>
+		<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			<h:panelGrid columns="2">
+
+				<label for="nome">Nome:</label>
+				<p:inputText id="nome" value="#{agenteBean.agente.nome}" />
+
+				<label for="dataContratacao">Data Contratação:</label>
+				<p:calendar id="dataContratacao" pattern="dd/dd/yyyy"
+					value="#{agenteBean.agente.dtContratacao}" locale="pt_BR"></p:calendar>
+
+				<label for="tempoServico">Tempo de Serviço:</label>
+				<p:inputText id="tempoServiceo"
+					value="#{agenteBean.agente.tempoServico}" />
+
+				<p:commandButton action="#{agenteBean.incluir()}" value="Alterar"></p:commandButton>
+
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:decorate>
+</html>
